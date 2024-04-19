@@ -1,50 +1,34 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                   Tecnológico de Costa Rica
-%
-%                       Yherland Elizondo
-%                       Gabriela Quesada
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%           ok: don't change the logic of that line
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+:-consult('Logic/dijkstra.pl').
 :-consult('Logic/splitter.pl').
 :-consult('ExpertSystem/parser.pl').
 :-consult('Logic/listManager.pl').
+:-consult('Logic/quicksort.pl').
 
-% First predicate, used to start the interaction
-mrTrainer :-
+% Predicate used to initiate the conversation.
+heywazelog :-
+    nl, write('Hola usuario, bienvenido.'), 
     nl, write("NOTA: Recuerde usar MAYUSCULAS donde es debido y evitar tanto tildes como puntos finales."), 
-    nl, write("NOTA: MrTrainer actualmente te puede ayudar con los siguientes deportes: atletismo, ciclismo, natacion, beisbol."),nl,
-    nl, write('Hola usuario, dime, Que deporte quieres practicar?'), 
-    nl, getSport.
+    nl, getOrigin.
  
-%-------------------------------------MRTRAINER EXPERT SYSTEM INTERFACE-------------------------------------
+%-------------------------------------WAZELOG EXPERT SYSTEM-------------------------------------
 
-% Predicate used to obtain the sport
-getSport:-
+% Predicate used to obtain the origin
+getOrigin:-
+    nl,write('Donde se encuentra ubicado actualmente?.'), nl,
     read_string(user_input, "\n",  "\r", _, START),
-    split_string(START, ' ', SUBLIST_START), %ok
-    lastElement(SUBLIST_START, LASTITEM_START), %ok
-    (analyzeSentence(SUBLIST_START) -> getPathology(LASTITEM_START) ; sportError).
+    split_string(START, ' ', SUBLIST_START), 
+    lastElement(SUBLIST_START, LASTITEM_START), 
+    (analyzeSentence(SUBLIST_START) -> getDestination(LASTITEM_START) ; originError).
     
 
-% Predicate used to obtain the possible pathology of the user   
-getPathology(START):-
-    nl,write('Genial, tienes alguna patologia que te impida hacer ejercicio con normalidad?'), nl,
-    read_string(user_input, "\n", "\r", _, END),
-    split_string(END, ' ', SUBLIST_END), 
-    lastElement(SUBLIST_END, LASTITEM_END), 
-    getSchedule(LASTITEM_END)
-    %(analyzeSentence(SUBLIST_END) -> addIntermediate(START,[],LASTITEM_END) ; destinyError(START)).
-
-
-% Predicate used to obtain the possible pathology of the user
-getSchedule(START):-
-    nl,write('Comprendo, ahora, has pensado con que frecuencia te gustaría practicar?'),write(START),write('?'),nl,
+% Predicate used to obtain the destination   
+getDestination(START):-
+    nl,write('Favor ingresa tu destino.'), nl,
     read_string(user_input, "\n", "\r", _, END),
     split_string(END, ' ', SUBLIST_END), 
     lastElement(SUBLIST_END, LASTITEM_END), 
     (analyzeSentence(SUBLIST_END) -> addIntermediate(START,[],LASTITEM_END) ; destinyError(START)).
+
 
 % Predicate used to obtain the intermediate nodes
 addIntermediate(START,INTERMEDIATE_LIST,END):-
@@ -56,6 +40,7 @@ addIntermediate(START,INTERMEDIATE_LIST,END):-
             (analyzeSentence(SUBLIST_INTER) -> 
                 lastElement(SUBLIST_INTER, LASTITEM), 
                 % write(LASTITEM),write('m'),nl,
+                route(START,LASTITEM,TIME,RUTE),
                 % write(START),write('m'),write(LASTITEM),write('m'), % OK
                 % write(TIME),nl,
                 nl,write('SUGERENCIA: Puedes tomar en cuenta esta ruta alternativa hacia '), 
@@ -102,7 +87,28 @@ interDirectioner(START,INTERMEDIATE_LIST,END) :-
     intermediateError(START,NEW_INTERMEDIATE_LIST, END)).
 
 
+% Predicate used to provide the response to the user.
+answer(START,INTERMEDIATE_LIST,END) :-
+    quicksort(INTERMEDIATE_LIST, SORTEDLIST),
+    firstExtractor(SORTEDLIST,FINALINTER_LIST),
 
+    addToBeginning(START, FINALINTER_LIST, START_INTER),
+    addToEnd(END, START_INTER, START_INTER_END),
+
+    calculate_total_duration_and_route(START_INTER_END, TDURATION, TROUTE),
+    addToBeginning(START, TROUTE, FINAL_ROUTE),
+
+    nl,write('Tu ruta a seguir es la siguiente:'), nl,
+    nl,write(FINAL_ROUTE),nl,
+    nl,write('Con un tiempo estimado de: '),nl,nl, 
+    write(TDURATION),
+    write(" minutos en horario normal."),nl,
+    multiplyByNum(TDURATION,TDURATION_DAM),
+    write(TDURATION_DAM),
+    write(" minutos en hora pico."),nl,
+
+
+    (endConversation(START,SORTEDLIST,END)).
 
 
 % Predicate used to end the conversation   
@@ -112,9 +118,9 @@ endConversation(START,SORTEDLIST,END):-
     nl,(TERMINATE = "si" -> write('Gracias por usar el programa. Conversacion terminada.'), nl, nl ; addIntermediate(START,SORTEDLIST,END)). 
 
 %-------------------------------------ERROR MANAGER
-sportError:-
-    nl, write("Lo siento, no tengo informacion sobre el deporte que mencionaste, te recomiendo utilizar otro entrenador."),nl,
-    getSport.
+originError:-
+    nl, write("El origen ingresado no se encuentra en mi base de datos o no comprendo tu entrada, favor ingresa una distinta."),nl,
+    getOrigin.
 
 destinyError(START):-
     nl, write("El destino ingresado no se encuentra en mi base de datos o no comprendo tu entrada, favor ingresa una distinta."),nl,
