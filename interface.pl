@@ -13,8 +13,9 @@
 
 % Primer predicado, utilizado para inicial la interacción con el usuario
 mrTrainer :-
-    nl, write("NOTA: Recuerde usar MAYUSCULAS donde es debido y evitar tanto tildes como puntos finales."), 
-    nl, write("NOTA: MrTrainer actualmente te puede ayudar con los siguientes deportes: atletismo, ciclismo, natacion."),nl,
+    nl, write("NOTA: Recuerde evitar tanto tildes como puntos finales."), 
+    nl, write("NOTA: MrTrainer actualmente te puede ayudar con los siguientes deportes: "), nl, write("-> Atletismo"), 
+    nl, write("-> Ciclismo"), nl, write("-> Natacion"), nl,
     nl, write('Hola usuario, bienvenido a mrTrainer, dime, cual es tu nombre?'),nl, 
     read_string(user_input, "\n",  "\r", _, NOMBRE),nl,nl,
     write('Un gusto '),write(NOMBRE),write('!'),
@@ -28,7 +29,8 @@ obtenerDeporte(NOMBRE):-
     read_string(user_input, "\n",  "\r", _, MSG_INICIAL),
     split_string(MSG_INICIAL, ' ', MSG_INICIAL_SPLIT), %ok
     lastElement(MSG_INICIAL_SPLIT, DEPORTE), %ok
-    (analizarOracion(MSG_INICIAL_SPLIT) -> obtenerEnfermedad(DEPORTE) ; errorDeporte(NOMBRE)).
+    %(analizarOracion(MSG_INICIAL_SPLIT) -> obtenerEnfermedad(DEPORTE) ; errorDeporte(NOMBRE)).
+    (analizarOracion(MSG_INICIAL_SPLIT) -> obtenerDeporte(NOMBRE) ; errorDeporte(NOMBRE)).
     
 
 % predicado utilizado para obtener las posibles enfermedades del usuario

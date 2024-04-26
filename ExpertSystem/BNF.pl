@@ -2,24 +2,38 @@
 
 %-------------------------------------REGLAS GRAMATICALES
 
-%   DETERM + LOCATION
+%   DETERMINANTE + DEPORTE
 sintagmaNominal --> determinante, deporte.
-% nounPhrase --> ["Practico"], natacion.
+sintagmaNominal --> deporte.
 
-%   VERB + nounPhrase
+%   VERBO + SINGTAGMANOMINAL
 sintagmaVerbal --> verbo, sintagmaNominal.
-% verbPhrase --> ["Estoy", "en"], place.
-
-
     
 %-------------------------------------ORACIONES ACEPTADAS
 
-oracion --> verbo. %ok -> "R/ ciclismo"
-oracion --> deporte. %ok -> "R/ ciclismo"
-oracion --> sintagmaNominal. %creo que no
+oracion --> sintagmaNominal. 
+% oracion --> El ciclismo
+% oracion --> atletismo
+
 oracion --> sintagmaVerbal.
-oracion --> determinante, sintagmaVerbal.
+% oracion --> Practico el ciclismo
+
 oracion --> verbo, sintagmaVerbal.
+% oracion --> Quiero Practicar ciclismo
+
+oracion --> determinante, sintagmaVerbal.
+% oracion --> me interesa el ciclismo
+
+oracion --> determinante, verbo, sintagmaVerbal.
+% oracion --> me interesa practicar ciclismo
+
+oracion --> verbo, determinante, sintagmaVerbal.
+% oracion --> voy a practicar ciclismo
+% oracion --> tengo que practicar ciclismo
+
+oracion --> verbo, verbo , determinante, sintagmaVerbal.
+% oracion --> Estoy interesado en practicar ciclismo
+
 
 %-------------------------------------VERBOS
 
@@ -34,35 +48,33 @@ verbo --> ["Hacer"].
 verbo --> ["Desear"].
 
 %-------------------------------------VALIDACION DE SINONIMOS
-% linea la cual verifica si el verbo ingresado conincide con un sinonimo 
-% previamente definido
+
 verbo --> [Sinonimo], {sinonimo(Verbo, Sinonimo), Verbo \= Sinonimo}.
 
 %-------------------------------------DETERMINANTES
-determinante --> ["en"].
 determinante --> ["En"].
-determinante --> ["de"].
-determinante --> ["De"].
-determinante --> ["a"]. %ok
-determinante --> ["Se"].
-determinante --> ["se"].
-determinante --> ["Al"].
-determinante --> ["al"].
-determinante --> ["la"].
-determinante --> ["para"].
-determinante --> ["Para"].
-determinante --> ["que"]. %ok
-determinante --> ["Me"].
-determinante --> ["el"].
 determinante --> ["El"].
+determinante --> ["De"].
+determinante --> ["A"].
+determinante --> ["Se"].
+determinante --> ["Al"].
+determinante --> ["La"].
+determinante --> ["Para"].
+determinante --> ["Que"]. %ok
+determinante --> ["Me"].
+determinante --> ["El"].
+determinante --> ["Yo"].
 
-%-------------------------------------Pronombres
-pronombres --> ["Me"].
-pronombres --> ["yo"].
+%-------------------------------------VALIDACION DE SINONIMOS
+
+determinante --> [Sinonimo], {sinonimo(Determinante, Sinonimo), Determinante \= Sinonimo}.
 
 %-------------------------------------DEPORTES
 
-deporte --> ["natacion"].
-deporte --> ["atletismo"].
-deporte --> ["beisbol"].
-deporte --> ["ciclismo"].
+deporte --> ["Atletismo"].
+deporte --> ["Natacion"].
+deporte --> ["Ciclismo"].
+
+%-------------------------------------VALIDACION DE SINONIMOS
+
+deporte --> [Sinonimo], {sinonimo(Deporte, Sinonimo), Deporte \= Sinonimo}.
