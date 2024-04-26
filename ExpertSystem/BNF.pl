@@ -1,76 +1,61 @@
 
-%-------------------------------------GRAMMATICAL RULES
+%-------------------------------------REGLAS GRAMATICALES
 
     %   DETERM + LOCATION
-    nounPhrase --> determ, place.
-    % nounPhrase --> ["En"], Cartago.
+    sintagmaNominal --> determinante, deporte.
+    % nounPhrase --> ['Practico'], natacion.
 
     %   VERB + nounPhrase
-    verbPhrase --> verb, nounPhrase.
-    % verbPhrase --> ["Estoy", "en"], place.
+    sintagmaVerbal --> verbo, sintagmaNominal.
+    % verbPhrase --> ['Estoy', 'en'], place.
 
 
     
- %-------------------------------------SENTENCES
+ %-------------------------------------ORACIONES ACEPTADAS
 
-    sentence --> sport. %ok
-    sentence --> nounPhrase.
-    sentence --> verbPhrase.
-    sentence --> determ, verbPhrase.
-    sentence --> verb, verbPhrase.
+oracion --> deporte. %ok
+oracion --> sintagmaNominal.
+oracion --> sintagmaVerbal.
+oracion --> determinante, sintagmaVerbal.
+oracion --> verbo, sintagmaVerbal.
+
+%-------------------------------------VERBOS
+
+verbo --> ['Quiero']. %FIXME: minuscula
+verbo --> ['Practico']. %FIXME: minuscula FIXME: incluir practicar como sin
+verbo --> ['interesado']. %FIXME: interesado como sin
+verbo --> ['Tengo']. %FIXME: minuscula
+verbo --> ['Estoy']. 
+verbo --> ['gustaria']. %OK
 
 
-%-------------------------------------VERBS
 
-    verb --> ["Estoy"].
-    verb --> ["Soy"].
-    verb --> ["Voy"].
-    verb --> ["Parare"].
-    verb --> ["Dirijo"].
-    verb --> ["encuentro"].
-    verb --> ["Tengo"].
-    verb --> ["tengo"].
-    verb --> ["pasar"].
-    verb --> ["gustaria"].
-    verb --> ["ubico"].
-    verb --> ["ubica"].
-    verb --> ["ubicado"].
-    verb --> ["dirijo"].
-    verb --> ["esta"].
-    verb --> ["Esta"].
-    verb --> ["Queda"].
+%-------------------------------------DETERMINANTES
+determinante --> ['en'].
+determinante --> ['En'].
+determinante --> ['de'].
+determinante --> ['De'].
+determinante --> ['a'].
+determinante --> ['A'].
+determinante --> ['Se'].
+determinante --> ['se'].
+determinante --> ['Al'].
+determinante --> ['al'].
+determinante --> ['la'].
+determinante --> ['para'].
+determinante --> ['Para'].
+determinante --> ['que'].
+determinante --> ['Me'].
+determinante --> ['el'].
+determinante --> ['El'].
 
-%-------------------------------------DETERMINANTS
-    determ -->["en"].
-    determ -->["En"].
-    determ -->["de"].
-    determ -->["De"].
-    determ -->["a"].
-    determ -->["A"].
-    determ -->["Se"].
-    determ -->["se"].
-    determ -->["Al"].
-    determ -->["al"].
-    determ -->["la"].
-    determ -->["para"].
-    determ -->["Para"].
-    determ -->["que"].
-    determ -->["Me"].
-    determ -->["el"].
-    determ -->["El"].
+%-------------------------------------Pronombres
+pronombres --> ['me'].
+pronombres --> ['yo'].
 
-%-------------------------------------PLACES
+%-------------------------------------DEPORTES
 
-    sport --> ["natacion"].
-    sport --> ["atletismo"].
-    sport --> ["beisbol"].
-    sport --> ["ciclismo"].
-
-%-------------------------------------AUXILIAR PLACES
-
-    auxPlace --> ["supermercado"].
-    auxPlace --> ["cine"].
-    auxPlace --> ["gimnasio"].
-    auxPlace --> ["escuela"].
-    auxPlace --> ["universidad"].
-    auxPlace --> ["cancha"].
+deporte --> ['natacion'].
+deporte --> ['atletismo'].
+deporte --> ['beisbol'].
+deporte --> ['ciclismo'].

@@ -5,11 +5,6 @@
 % INPUT: User text 
 % OUTPUT: True or False
 % STRUCTURE: phrase(GrammarRule, InputList)
-analyzeSentence(Input) :- phrase(sentence, Input).
+analizarOracion(Input) :- phrase(oracion, Input).
 
 
-%-------------------------------------AUXLIAR PARSER
-% Auxiliary parser used to evaluate user input when dealing with auxiliary locations.
-% INPUT: User text 
-% OUTPUT: True or False
-analyzeAuxiliarSentence(Input) :- phrase(auxiliarSentence, Input).
