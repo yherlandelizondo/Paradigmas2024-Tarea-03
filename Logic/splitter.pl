@@ -19,10 +19,5 @@ wrapInQuotes(SUBSTRING, SUBSTRING_MARK) :-
     string_concat(TEMP, '', SUBSTRING_MARK). % Agrega comillas al final
 
 
-% Predicate to multiply the value of a variable by 2
-% INPUT: value
-% OUTPUT: value multiplied by 2
-multiplyByNum(X, Result) :-
-    Result is X * 2.
 
 

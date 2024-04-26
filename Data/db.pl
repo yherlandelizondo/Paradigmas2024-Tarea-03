@@ -1,56 +1,32 @@
-% Graph connections
 
-% San Jose
-d("SanJose","Cartago",20).
-d("SanJose","Corralillo",22).
+%-------------------------------------SINONIMOS O VARIACIONES
+%sinonimo(original, sinonimo)
 
-% Corralillos
-d("Corralillo","SanJose",22).
-d("Corralillo","MusgoVerde",6).
+sinonimo("Querer", "Quiero").
+sinonimo("Querer", "quiero").
 
-% Musgo Verde
-d("MusgoVerde","Corralillo",6).
-d("MusgoVerde","Cartago",10).
+sinonimo("Practicar", "practicar").
+sinonimo("Practicar", "practico").
+sinonimo("Practicar", "Practico").
 
-% Cartago
-d("Cartago","MusgoVerde",10).
-d("Cartago","SanJose",20).
-d("Cartago","Paraiso",10).
-d("Cartago","TresRios",8).
-d("Cartago","Pacayas",13).
+sinonimo("Interesar", "Interesado").
+sinonimo("Interesar", "interesa").
+sinonimo("Interesar", "interesado").
 
-% Tres Rios
-d("TresRios","Pacayas",15).
-d("TresRios","SanJose",8).
+sinonimo("Tener", "tengo").
+sinonimo("Tener", "Tengo").
 
-% Pacayas
-d("Pacayas","TresRios",15).
-d("Pacayas","Cartago",13).
-d("Pacayas","Cervantes",8).
+sinonimo("Estar", "Estoy").
+sinonimo("Estar", "estoy").
 
-% Paraiso
-d("Paraiso","Cervantes",4).
-d("Paraiso","Cachi",10).
-d("Paraiso","Orosi",8).
+sinonimo("Gustar", "gustaria").
+sinonimo("Gustar", "gusta").
 
-%  Cervantes
-d("Cervantes","JuanVinas",5).
-d("Cervantes","Pacayas",8).
-d("Cervantes","Cachi",7).
+sinonimo("Ir", "Voy").
+sinonimo("Ir", "voy").
 
-%  Orosi
-d("Orosi","Paraiso",8).
-d("Orosi","Cachi",12).
+sinonimo("Hacer", "hacer").
 
-%  Juan Vinas
-d("JuanVinas","Turrialba",4).
+sinonimo("Desear", "Deseo").
+sinonimo("Desear", "deseo").
 
-% Cachi
-d("Cachi","Turrialba",40).
-d("Cachi","Cervantes",7).
-d("Cachi","Paraiso",10).
-d("Cachi","Orosi",12).
-
-% Turrialba
-d("Turrialba","Cachi",40).
-d("Turrialba","Pacayas",18).
