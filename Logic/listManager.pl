@@ -44,3 +44,10 @@ addToEnd(ELEMENT, [], [ELEMENT]).
 addToEnd(ELEMENT, [HEAD|TAIL], [HEAD|NEWLIST]) :-
     addToEnd(ELEMENT, TAIL, NEWLIST).
 
+% Rule to obtain the number of the list
+% example
+% ?- get_number([prefiero, tener, 2, dias, de, descanso], X).
+get_number(Lista, Numero) :-
+    member(Numero, Lista),
+    number(Numero).
+    

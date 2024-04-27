@@ -3,10 +3,12 @@
 %-------------------------------------REGLAS GRAMATICALES
 
 %   DETERMINANTE + DEPORTE
-sintagmaNominal --> determinante, deporte.
 sintagmaNominal --> deporte.
 sintagmaNominal --> enfermedad.
+sintagmaNominal --> nivel.
+sintagmaNominal --> determinante, deporte.
 sintagmaNominal --> determinante, enfermedad.
+sintagmaNominal --> determinante, nivel.
 
 %   VERBO + SINGTAGMANOMINAL
 sintagmaVerbal --> verbo, sintagmaNominal.
@@ -57,6 +59,30 @@ oracionEnfermedad --> verbo, determinante, determinante, sintagmaNominal.
 %-------------------------------------ORACIONES ACEPTADAS AFIRMACION
 
 oracionAfirmacion --> afirmacion.
+%oracionAfirmacion --> si.
+
+
+%-------------------------------------ORACIONES ACEPTADAS NIVEL
+
+oracionNivel --> sintagmaNominal.
+%oracionNivel --> intermedio.
+
+oracionNivel --> sintagmaVerbal.
+%oracionNivel --> tengo nivel inicial.
+%oracionNivel --> soy inicial.
+
+oracionNivel --> determinante, verbo, determinante, sintagmaNominal.
+%oracionNivel --> Me considero en nivel inicial.
+
+oracionNivel --> verbo, determinante, verbo, sintagmaNominal.
+%oracionNivel --> diria que soy nivel inicial.
+
+oracionNivel --> verbo, determinante, sintagmaNominal.
+%oracionNivel --> Tengo un nivel medio.
+
+oracionNivel --> verbo, determinante, verbo, determinante, sintagmaNominal.
+%oracionNivel --> considero que estoy en nivel medio.
+
 
 %-------------------------------------VERBOS
 
@@ -72,6 +98,9 @@ verbo --> ["Desear"].
 verbo --> ["Tener"].
 verbo --> ["Sufrir"].
 verbo --> ["Padecer"].
+verbo --> ["Considerar"].
+verbo --> ["Ser"].
+verbo --> ["Creer"].
 
 %-------------------------------------VALIDACION DE SINONIMOS
 
@@ -88,11 +117,13 @@ determinante --> ["La"].
 determinante --> ["Para"].
 determinante --> ["Que"].
 determinante --> ["Me"].
+determinante --> ["Que"].
+determinante --> ["Un"].
 determinante --> ["El"].
 determinante --> ["Yo"].
 determinante --> ["Una"].
 determinante --> ["Problema"]. %Por simplicidad se incluye esta palabra como determinante.
-determinante --> ["Pierna"]. %Por simplicidad se incluye esta palabra como determinante.
+determinante --> ["Nivel"]. %Por simplicidad se incluye esta palabra como determinante.
 
 %-------------------------------------VALIDACION DE SINONIMOS
 
@@ -124,4 +155,14 @@ enfermedad --> [Sinonimo], {sinonimo(Enfermedad, Sinonimo), Enfermedad \= Sinoni
 
 afirmacion --> ["si"].
 afirmacion --> ["no"].
+
+%-------------------------------------NIVELES
+
+nivel --> ["Inicial"].
+nivel --> ["Intermedio"].
+nivel --> ["Avanzado"].
+
+%-------------------------------------VALIDACION DE SINONIMO
+
+nivel --> [Sinonimo], {sinonimo(Nivel, Sinonimo), Nivel \= Sinonimo}.
 

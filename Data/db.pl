@@ -40,6 +40,17 @@ sinonimo("Padecer", "Padezco").
 sinonimo("Sufrir", "sufro").
 sinonimo("Sufrir", "Sufro").
 
+sinonimo("Considerar", "considero").
+sinonimo("Considerar", "Considero").
+
+sinonimo("Ser", "soy").
+sinonimo("Ser", "Soy").
+
+sinonimo("Creer", "creo").
+sinonimo("Creer", "Creo").
+sinonimo("Creer", "diria").
+sinonimo("Creer", "Diria").
+
 %-------------------------------------SINONIMOS DEPORTES
 
 sinonimo("Atletismo", "atletismo").
@@ -90,6 +101,12 @@ sinonimo("Una", "una").
 sinonimo("Problema", "problema").
 sinonimo("Problema", "problemas").
 
+sinonimo("Nivel", "nivel").
+
+sinonimo("Que", "que").
+
+sinonimo("Un", "un").
+
 %-------------------------------------SINONIMOS ENFERMEDADES
 
 sinonimo("Asma", "asma").
@@ -110,7 +127,17 @@ sinonimo("Columna", "espalda").
 
 sinonimo("Rodilla", "rodilla").
 
-%-------------------------------------SINONIMOS AFIRMACIONES
+%-------------------------------------SINONIMOS NIVEL
 
-sinonimo("Si", "si").
-sinonimo("No", "no").
+sinonimo("Inicial", "inicial").
+sinonimo("Inicial", "bajo").
+sinonimo("Inicial", "Bajo").
+
+sinonimo("Intermedio", "intermedio").
+sinonimo("Intermedio", "medio").
+sinonimo("Intermedio", "Medio").
+
+sinonimo("Avanzado", "avanzado").
+sinonimo("Avanzado", "alto").
+sinonimo("Avanzado", "Alto").
+

@@ -25,3 +25,24 @@ Tengo diabetes.
 Tengo problemas de rodilla
 Tengo problemas en la rodilla
 Sufro de problemas de espalda 
+
+Pregunta 3 - "Anotado! Por otro lado, cuentame, en que nivel te consideras al practicar el deporte que me mencionaste?"
+
+inicial 
+Me considero en nivel inicial
+Soy nivel inicial 
+Diria que soy nivel inicial
+Tengo un nivel medio
+Soy intermedio
+considero que estoy en nivel medio 
+considero que tengo un nivel avanzado 
+creo que tengo un nivel medio 
+
+Pregunta 4 - 'Dime, cuantos dias de descanso te gustaria tener en tu semana?'
+
+2
+me gustaria tener 2 dias de descanso
+prefiero tener 2 dias de descanso
+prefiero tener 2 dias libres
+2 dias estaria bien
+serian 3 dias 

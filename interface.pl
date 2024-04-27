@@ -34,35 +34,36 @@ obtenerDeporte(NOMBRE):-
 % predicado utilizado para obtener las posibles enfermedades del usuario
 obtenerEnfermedad(DEPORTE, NOMBRE):-
     write('Tienes alguna condicion que te impida hacer '), write(DEPORTE),write(' con normalidad? (si/no)'), nl,
-    read_string(user_input, "\n", "\r", _, ENFERMEDAD_CONFIRMACION), %se lee los datos del usuario
-    split_string(ENFERMEDAD_CONFIRMACION, ' ', MSG_CONFIRMACION_SPLIT), %se hace split del string ingresado por espacios
-    lastElement(MSG_CONFIRMACION_SPLIT, CONFIRMACION),%se obtiene el deporte ingresado por el usuario
+    read_string(user_input, "\n", "\r", _, MSG_ENFERMEDAD_CONFIRMACION), %se lee los datos del usuario
+    split_string(MSG_ENFERMEDAD_CONFIRMACION, ' ', MSG_CONFIRMACION_SPLIT), %se hace split del string ingresado por espacios
+    lastElement(MSG_CONFIRMACION_SPLIT, CONFIRMACION),%se obtiene la confirmacion ingresada por el usuario
     (analizarAfirmacion(MSG_CONFIRMACION_SPLIT) -> %verificando si se ingreso (si/no) correctamente
             (CONFIRMACION = "si" -> nl, write('Entiendo, dime que condicion/enfermedad tienes?'), nl, %si el usuario dice que SI tiene una condicion, pregunta cual es
                     read_string(user_input, "\n", "\r", _, MSG_ENFERMEDAD), %se lee los datos del usuario
                     split_string(MSG_ENFERMEDAD, ' ', MSG_ENFERMEDAD_SPLIT), %se hace split del string ingresado por espacios
                     lastElement(MSG_ENFERMEDAD_SPLIT, ENFERMEDAD), %se obtiene la enfermedad ingresada por el usuario
-                    (analizarEnfermedad(MSG_ENFERMEDAD_SPLIT) -> obtenerFrecuencia(NOMBRE ,DEPORTE, ENFERMEDAD); errorEnfermedad(NOMBRE, DEPORTE)) %si la frase de enfermedad es coherente, pregunta por la frecuencia
-            ;obtenerFrecuencia(NOMBRE, DEPORTE, ['']))%si el usuario indicia que NO tiene enfermedad, no se pide la misma y se pide frecuencia
+                    (analizarEnfermedad(MSG_ENFERMEDAD_SPLIT) -> nl, write('Anotado! Por otro lado, '), obtenerNivel(NOMBRE ,DEPORTE, ENFERMEDAD); errorEnfermedad(NOMBRE, DEPORTE)) %si la frase de enfermedad es coherente, pregunta el nivel
+            ;nl, write('Anotado! Por otro lado, '), obtenerNivel(NOMBRE, DEPORTE, ['']))%si el usuario indicia que NO tiene enfermedad, no se pide la misma y se pide nivel
     ;errorAfirmacionEnfermedad(DEPORTE, NOMBRE)). %si el usuario no ingresa (si/no) correctamente se devuelve un error
 
 
-% Predicado utlizado para obtener la frecuencia de entrenamiendo
-obtenerFrecuencia(NOMBRE ,DEPORTE, ENFERMEDAD):-
-    nl,write('Comprendo, ahora, has pensado con que frecuencia te gustaria practicar '),write(DEPORTE),write('?'),nl,
-    read_string(user_input, "\n", "\r", _, END),
-    split_string(END, ' ', SUBLIST_END), 
-    lastElement(SUBLIST_END, LASTITEM_END).
-    %(analyzeSentence(SUBLIST_END) -> addIntermediate(START,[],LASTITEM_END) ; destinyError(START))
-    
-% Predicado utlizado para obtener la frecuencia de entrenamiendo
-obtenerDiasLibres(START):-
-    nl,write('Perfecto!. Y dime, cuantos días de descanso te gustaría tener en tu semana'),write(START),write('?'),nl,
-    read_string(user_input, "\n", "\r", _, END),
-    split_string(END, ' ', SUBLIST_END), 
-    lastElement(SUBLIST_END, LASTITEM_END).
-    %(analyzeSentence(SUBLIST_END) -> addIntermediate(START,[],LASTITEM_END) ; destinyError(START))
+% Predicado utlizado para obtener el nivel del usuario entrenamiendo
+obtenerNivel(NOMBRE ,DEPORTE, ENFERMEDAD):-
+    write('Cuentame, en que nivel te consideras al practicar el deporte que me mencionaste? (inicial/intermedio/avanzado)'),nl,
+    read_string(user_input, "\n", "\r", _, MSG_NIVEL), %se lee los datos del usuario
+    split_string(MSG_NIVEL, ' ', MSG_NIVEL_SPLIT),  %se hace split del string ingresado por espacios
+    lastElement(MSG_NIVEL_SPLIT, NIVEL),%se obtiene el nivel ingresado por el usuario
+    (analizarNivel(MSG_NIVEL_SPLIT) -> nl,write('Muy bien. Por ultimo, '),obtenerDiasLibres(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL) ; errorNivel(NOMBRE ,DEPORTE, ENFERMEDAD)). %verificando si la oracion de nivel es coherente, en dado caso pregunta dias libres
 
+% Predicado utlizado para obtener la frecuencia de entrenamiendo
+obtenerDiasLibres(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL):-
+    write('Dime, cuantos dias de descanso te gustaria tener en tu semana? (2-5 dias)'),nl,
+    read_string(user_input, "\n", "\r", _, END),
+    split_string(END, ' ', SUBLIST_END), 
+    lastElement(SUBLIST_END, LASTITEM_END).
+    %(analyzeSentence(SUBLIST_END) -> addIntermediate(START,[],LASTITEM_END) ; destinyError(START))
+    %FIXME: ya se agrego la regla para obener numero, utilizarla. 
+    %FIXME: me falta modiificar bnf y db con la cantidad de dias y demas, ya se anadieron las posibilidades al archivo .txt 
 %-------------------------------------Predicados para finalizar conversaciones-------------------------------------
 
 % Predicado utilizado para terminar la conversación 
@@ -82,13 +83,22 @@ errorDeporte(NOMBRE):-
     nl, write('Lo siento '), write(NOMBRE), write(' no tengo informacion sobre el deporte que mencionaste, te recomiendo utilizar otro entrenador.'),nl,
     terminarConversacionDeporte(NOMBRE).
 
-errorFrecuencia(START):-
-    nl, write("Disculpa, no te comprendi. Por favor, vuelve a ingresar la frecuencia con la que quieres entrenar."),nl,
-    obtenerFrecuencia(START).
+errorNivel(NOMBRE, DEPORTE, ENFERMEDAD):-
+    nl, write('Disculpa '), write(NOMBRE), write(', no entendi lo que quisiste decir. Por favor, vuelve a ingresar tu nivel.'),nl,
+    write("Te recuerdo que con mrTrainer puedes elegir los siguientes niveles: "), nl,
+    write("-> Inicial"), nl,
+    write("-> Intermedio"), nl,
+    write("-> Avanzado"), nl,
+    obtenerNivel(NOMBRE, DEPORTE, ENFERMEDAD).
 
 errorAfirmacionEnfermedad(DEPORTE, NOMBRE):-
-        nl, write("Disculpa, no te comprendi, recuerda utilizar (si/no)."),nl,
-        obtenerEnfermedad(DEPORTE, NOMBRE).
+    nl, write("Disculpa, no te comprendi, recuerda utilizar (si/no)."),nl,
+    obtenerEnfermedad(DEPORTE, NOMBRE).
+
+errorDiasDescanso(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL):-
+    nl, write('Disculpa '), write(NOMBRE), write(', no te comprendi. Por favor, vuelve a ingresar los dias de descanso.'),nl,
+    write("Te recuerdo que con mrTrainer puedes tener entre 2 y 5 dias de descanso."), nl,
+    obtenerDiasLibres(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL).
 
 errorEnfermedad(NOMBRE, DEPORTE):-
     nl, write('Lo siento '), write(NOMBRE), write(', no conozco la enfermedad que mencionas, te recomiendo utilizar otro sistema experto, o revisar que lo hayas escrito correctamente.'),nl, 
