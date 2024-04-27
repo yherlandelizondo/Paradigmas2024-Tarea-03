@@ -7,4 +7,5 @@
 % STRUCTURE: phrase(GrammarRule, InputList)
 analizarDeporte(Input) :- phrase(oracionDeporte, Input).
 analizarEnfermedad(Input) :- phrase(oracionEnfermedad, Input).
+analizarAfirmacion(Input) :- phrase(oracionAfirmacion, Input).
 

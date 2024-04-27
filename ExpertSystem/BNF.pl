@@ -6,6 +6,7 @@
 sintagmaNominal --> determinante, deporte.
 sintagmaNominal --> deporte.
 sintagmaNominal --> enfermedad.
+sintagmaNominal --> determinante, enfermedad.
 
 %   VERBO + SINGTAGMANOMINAL
 sintagmaVerbal --> verbo, sintagmaNominal.
@@ -13,31 +14,49 @@ sintagmaVerbal --> verbo, sintagmaNominal.
 %-------------------------------------ORACIONES ACEPTADAS DEPORTE
 
 oracionDeporte --> sintagmaNominal. 
-% oracion --> El ciclismo
-% oracion --> atletismo
+% oracionDeporte --> El ciclismo
+% oracionDeporte --> atletismo
 
 oracionDeporte --> sintagmaVerbal.
-% oracion --> Practico el ciclismo
+% oracionDeporte --> Practico el ciclismo
 
 oracionDeporte --> verbo, sintagmaVerbal.
-% oracion --> Quiero Practicar ciclismo
+% oracionDeporte --> Quiero Practicar ciclismo
 
 oracionDeporte --> determinante, sintagmaVerbal.
-% oracion --> me interesa el ciclismo
+% oracionDeporte --> me interesa el ciclismo
 
 oracionDeporte --> determinante, verbo, sintagmaVerbal.
-% oracion --> me interesa practicar ciclismo
+% oracionDeporte --> me interesa practicar ciclismo
 
 oracionDeporte --> verbo, determinante, sintagmaVerbal.
-% oracion --> voy a practicar ciclismo
-% oracion --> tengo que practicar ciclismo
+% oracionDeporte --> voy a practicar ciclismo
+% oracionDeporte --> tengo que practicar ciclismo
 
 oracionDeporte --> verbo, verbo , determinante, sintagmaVerbal.
-% oracion --> Estoy interesado en practicar ciclismo
+% oracionDeporte --> Estoy interesado en practicar ciclismo
 
 %-------------------------------------ORACIONES ACEPTADAS DEPORTE
 
 oracionEnfermedad --> sintagmaNominal.
+% oracionEnfermedad --> asma
+% oracionEnfermedad --> el asma
+% oracionEnfermedad --> de asma
+
+oracionEnfermedad --> sintagmaVerbal.
+% oracionEnfermedad --> Tengo asma.
+% oracionEnfermedad --> Sufro de diabetes.
+% oracionEnfermedad --> tengo problemas cardiacos.
+
+oracionEnfermedad --> verbo, determinante, sintagmaNominal.
+% oracionEnfermedad --> Tengo problemas de rodilla.
+
+oracionEnfermedad --> verbo, determinante, determinante, sintagmaNominal.
+% oracionEnfermedad --> Tengo problemas en la espalda.
+
+%-------------------------------------ORACIONES ACEPTADAS AFIRMACION
+
+oracionAfirmacion --> afirmacion.
 
 %-------------------------------------VERBOS
 
@@ -50,6 +69,9 @@ verbo --> ["Gustar"].
 verbo --> ["Ir"].
 verbo --> ["Hacer"].
 verbo --> ["Desear"].
+verbo --> ["Tener"].
+verbo --> ["Sufrir"].
+verbo --> ["Padecer"].
 
 %-------------------------------------VALIDACION DE SINONIMOS
 
@@ -68,6 +90,9 @@ determinante --> ["Que"].
 determinante --> ["Me"].
 determinante --> ["El"].
 determinante --> ["Yo"].
+determinante --> ["Una"].
+determinante --> ["Problema"]. %Por simplicidad se incluye esta palabra como determinante.
+determinante --> ["Pierna"]. %Por simplicidad se incluye esta palabra como determinante.
 
 %-------------------------------------VALIDACION DE SINONIMOS
 
@@ -83,15 +108,20 @@ deporte --> ["Ciclismo"].
 
 deporte --> [Sinonimo], {sinonimo(Deporte, Sinonimo), Deporte \= Sinonimo}.
 
-%-------------------------------------AFIRMACION / NEGACION
+%-------------------------------------ENFERMEDADES
 
-afirmacion --> ["Si"].
-afirmacion --> ["No"].
+enfermedad --> ["Asma"].
+enfermedad --> ["Cardiacos"].
+enfermedad --> ["Columna"].
+enfermedad --> ["Rodilla"].
+enfermedad --> ["Diabetes"].
 
 %-------------------------------------VALIDACION DE SINONIMOS
 
-afirmacion --> [Sinonimo], {sinonimo(Afirmacion, Sinonimo), Afirmacion \= Sinonimo}.
+enfermedad --> [Sinonimo], {sinonimo(Enfermedad, Sinonimo), Enfermedad \= Sinonimo}.
 
-%-------------------------------------ENFERMEDAD
+%-------------------------------------AFIRMACIONES
 
-enfermedad --> ["Gripe"].
+afirmacion --> ["si"].
+afirmacion --> ["no"].
+

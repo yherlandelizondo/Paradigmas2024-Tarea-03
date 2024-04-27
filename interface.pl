@@ -13,7 +13,7 @@
 
 % Primer predicado, utilizado para inicial la interacción con el usuario
 mrTrainer :-
-    nl, write("NOTA: Recuerde evitar tanto tildes como puntos finales."), 
+    nl,nl,nl,nl,nl,nl,nl,nl, write("NOTA: Recuerde evitar tanto tildes como puntos finales."), 
     nl, write("NOTA: MrTrainer actualmente te puede ayudar con los siguientes deportes: "), nl, write("-> Atletismo"), 
     nl, write("-> Ciclismo"), nl, write("-> Natacion"), nl,
     nl, write('Hola usuario, bienvenido a mrTrainer, dime, cual es tu nombre?'),nl, 
@@ -29,18 +29,22 @@ obtenerDeporte(NOMBRE):-
     read_string(user_input, "\n",  "\r", _, MSG_INICIAL), %se lee los datos del usuario
     split_string(MSG_INICIAL, ' ', MSG_INICIAL_SPLIT), %se hace split del string ingresado por espacios
     lastElement(MSG_INICIAL_SPLIT, DEPORTE), %se obtiene el deporte ingresado por el usuario
-    (analizarDeporte(MSG_INICIAL_SPLIT) -> obtenerEnfermedad(DEPORTE, NOMBRE) ; errorDeporte(NOMBRE)). %si la frase tiene sentido, se pregunta por la enfermedad.
+    (analizarDeporte(MSG_INICIAL_SPLIT) -> nl, nl, write("Genial, "), obtenerEnfermedad(DEPORTE, NOMBRE) ; errorDeporte(NOMBRE)). %si la frase tiene sentido, se pregunta por la enfermedad.
     
 % predicado utilizado para obtener las posibles enfermedades del usuario
-obtenerEnfermedad(DEPORTE, NOMBRE):- %FIXME: ALGUIEN PODRIA NO TENER ENFERMEDADES
-    nl,write('Genial, tienes alguna condicion que te impida hacer '), write(DEPORTE),write(' con normalidad? (si/no)'), nl,
+obtenerEnfermedad(DEPORTE, NOMBRE):-
+    write('Tienes alguna condicion que te impida hacer '), write(DEPORTE),write(' con normalidad? (si/no)'), nl,
     read_string(user_input, "\n", "\r", _, ENFERMEDAD_CONFIRMACION), %se lee los datos del usuario
-    (ENFERMEDAD_CONFIRMACION = "si" -> nl, write('Entiendo, dime que condicion/enfermedad tienes?'), nl, %si el usuario dice que SI tiene una condicion, pregunta cual es
-        read_string(user_input, "\n", "\r", _, MSG_ENFERMEDAD), %se lee los datos del usuario
-        split_string(MSG_ENFERMEDAD, ' ', MSG_ENFERMEDAD_SPLIT), %se hace split del string ingresado por espacios
-        lastElement(MSG_ENFERMEDAD_SPLIT, ENFERMEDAD), %se obtiene la enfermedad ingresada por el usuario
-        (analizarEnfermedad(MSG_ENFERMEDAD_SPLIT) -> obtenerFrecuencia(NOMBRE ,DEPORTE, ENFERMEDAD); errorEnfermedad(NOMBRE, DEPORTE))) %si la frase de enfermedad es coherente, pregunta por la frecuencia
-    ;obtenerFrecuencia(NOMBRE, DEPORTE, ['']). %si el usuario indicia que NO tiene enfermedad, no se pide la misma y se pide frecuencia
+    split_string(ENFERMEDAD_CONFIRMACION, ' ', MSG_CONFIRMACION_SPLIT), %se hace split del string ingresado por espacios
+    lastElement(MSG_CONFIRMACION_SPLIT, CONFIRMACION),%se obtiene el deporte ingresado por el usuario
+    (analizarAfirmacion(MSG_CONFIRMACION_SPLIT) -> %verificando si se ingreso (si/no) correctamente
+            (CONFIRMACION = "si" -> nl, write('Entiendo, dime que condicion/enfermedad tienes?'), nl, %si el usuario dice que SI tiene una condicion, pregunta cual es
+                    read_string(user_input, "\n", "\r", _, MSG_ENFERMEDAD), %se lee los datos del usuario
+                    split_string(MSG_ENFERMEDAD, ' ', MSG_ENFERMEDAD_SPLIT), %se hace split del string ingresado por espacios
+                    lastElement(MSG_ENFERMEDAD_SPLIT, ENFERMEDAD), %se obtiene la enfermedad ingresada por el usuario
+                    (analizarEnfermedad(MSG_ENFERMEDAD_SPLIT) -> obtenerFrecuencia(NOMBRE ,DEPORTE, ENFERMEDAD); errorEnfermedad(NOMBRE, DEPORTE)) %si la frase de enfermedad es coherente, pregunta por la frecuencia
+            ;obtenerFrecuencia(NOMBRE, DEPORTE, ['']))%si el usuario indicia que NO tiene enfermedad, no se pide la misma y se pide frecuencia
+    ;errorAfirmacionEnfermedad(DEPORTE, NOMBRE)). %si el usuario no ingresa (si/no) correctamente se devuelve un error
 
 
 % Predicado utlizado para obtener la frecuencia de entrenamiendo
@@ -82,9 +86,19 @@ errorFrecuencia(START):-
     nl, write("Disculpa, no te comprendi. Por favor, vuelve a ingresar la frecuencia con la que quieres entrenar."),nl,
     obtenerFrecuencia(START).
 
+errorAfirmacionEnfermedad(DEPORTE, NOMBRE):-
+        nl, write("Disculpa, no te comprendi, recuerda utilizar (si/no)."),nl,
+        obtenerEnfermedad(DEPORTE, NOMBRE).
+
 errorEnfermedad(NOMBRE, DEPORTE):-
-    nl, write('Lo siento '), write(NOMBRE), write(' no conozco la enfermedad que mencionas, te recomiendo utilizar otro sistema experto, o revisar que lo hayas escrito correctamente.'),nl, 
-    terminarConversacionEnfermedad(START, DEPORTE).
+    nl, write('Lo siento '), write(NOMBRE), write(', no conozco la enfermedad que mencionas, te recomiendo utilizar otro sistema experto, o revisar que lo hayas escrito correctamente.'),nl, 
+    write("Te recuerdo que mrTrainer te puede ayudar con las siguientes enfermedades: "), nl,
+    write("-> Asma o problemas pulmonares"), nl,
+    write("-> Problemas cardiacos"), nl,
+    write("-> Problemas de rodilla"), nl,
+    write("-> Problemas de columna o espalda"), nl,
+    write("-> Diabetes"), nl,
+    terminarConversacionEnfermedad(DEPORTE, NOMBRE).
     
 
 

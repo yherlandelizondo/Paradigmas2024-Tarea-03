@@ -12,3 +12,16 @@ Me interesa practicar ciclismo
 Me gustaría hacer ciclismo 
 Deseo practicar ciclismo 
 
+Pregunta 2 - "Entiendo, dime que condicion/enfermedad tienes?"
+
+asma
+Padezco de asma
+Tengo asma
+Sufro de diabetes.
+Tengo problemas cardiacos.
+Tengo problemas en la columna. 
+Tengo problemas pulmonares
+Tengo diabetes. 
+Tengo problemas de rodilla
+Tengo problemas en la rodilla
+Sufro de problemas de espalda 

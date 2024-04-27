@@ -29,9 +29,16 @@ sinonimo("Ir", "Voy").
 sinonimo("Ir", "voy").
 
 sinonimo("Hacer", "hacer").
+sinonimo("Hacer", "realizar").
 
 sinonimo("Desear", "Deseo").
 sinonimo("Desear", "deseo").
+
+sinonimo("Padecer", "padezco").
+sinonimo("Padecer", "Padezco").
+
+sinonimo("Sufrir", "sufro").
+sinonimo("Sufrir", "Sufro").
 
 %-------------------------------------SINONIMOS DEPORTES
 
@@ -74,7 +81,36 @@ sinonimo("Me", "me").
 
 sinonimo("Yo", "yo").
 
-%-------------------------------------SINONIMOS AFIRMACION
+sinonimo("En", "en").
+
+sinonimo("El", "el").
+
+sinonimo("Una", "una").
+
+sinonimo("Problema", "problema").
+sinonimo("Problema", "problemas").
+
+%-------------------------------------SINONIMOS ENFERMEDADES
+
+sinonimo("Asma", "asma").
+sinonimo("Asma", "pulmonar").
+sinonimo("Asma", "pulmonares").
+sinonimo("Asma", "Pulmonares").
+
+sinonimo("Diabetes", "diabetes").
+
+sinonimo("Cardiacas", "cardiacos").
+sinonimo("Cardiacas", "corazon").
+
+sinonimo("Lesiones", "lesion").
+sinonimo("Lesiones", "lesiones").
+
+sinonimo("Columna", "columna").
+sinonimo("Columna", "espalda").
+
+sinonimo("Rodilla", "rodilla").
+
+%-------------------------------------SINONIMOS AFIRMACIONES
 
 sinonimo("Si", "si").
 sinonimo("No", "no").
