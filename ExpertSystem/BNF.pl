@@ -5,35 +5,39 @@
 %   DETERMINANTE + DEPORTE
 sintagmaNominal --> determinante, deporte.
 sintagmaNominal --> deporte.
+sintagmaNominal --> enfermedad.
 
 %   VERBO + SINGTAGMANOMINAL
 sintagmaVerbal --> verbo, sintagmaNominal.
     
-%-------------------------------------ORACIONES ACEPTADAS
+%-------------------------------------ORACIONES ACEPTADAS DEPORTE
 
-oracion --> sintagmaNominal. 
+oracionDeporte --> sintagmaNominal. 
 % oracion --> El ciclismo
 % oracion --> atletismo
 
-oracion --> sintagmaVerbal.
+oracionDeporte --> sintagmaVerbal.
 % oracion --> Practico el ciclismo
 
-oracion --> verbo, sintagmaVerbal.
+oracionDeporte --> verbo, sintagmaVerbal.
 % oracion --> Quiero Practicar ciclismo
 
-oracion --> determinante, sintagmaVerbal.
+oracionDeporte --> determinante, sintagmaVerbal.
 % oracion --> me interesa el ciclismo
 
-oracion --> determinante, verbo, sintagmaVerbal.
+oracionDeporte --> determinante, verbo, sintagmaVerbal.
 % oracion --> me interesa practicar ciclismo
 
-oracion --> verbo, determinante, sintagmaVerbal.
+oracionDeporte --> verbo, determinante, sintagmaVerbal.
 % oracion --> voy a practicar ciclismo
 % oracion --> tengo que practicar ciclismo
 
-oracion --> verbo, verbo , determinante, sintagmaVerbal.
+oracionDeporte --> verbo, verbo , determinante, sintagmaVerbal.
 % oracion --> Estoy interesado en practicar ciclismo
 
+%-------------------------------------ORACIONES ACEPTADAS DEPORTE
+
+oracionEnfermedad --> sintagmaNominal.
 
 %-------------------------------------VERBOS
 
@@ -60,7 +64,7 @@ determinante --> ["Se"].
 determinante --> ["Al"].
 determinante --> ["La"].
 determinante --> ["Para"].
-determinante --> ["Que"]. %ok
+determinante --> ["Que"].
 determinante --> ["Me"].
 determinante --> ["El"].
 determinante --> ["Yo"].
@@ -78,3 +82,16 @@ deporte --> ["Ciclismo"].
 %-------------------------------------VALIDACION DE SINONIMOS
 
 deporte --> [Sinonimo], {sinonimo(Deporte, Sinonimo), Deporte \= Sinonimo}.
+
+%-------------------------------------AFIRMACION / NEGACION
+
+afirmacion --> ["Si"].
+afirmacion --> ["No"].
+
+%-------------------------------------VALIDACION DE SINONIMOS
+
+afirmacion --> [Sinonimo], {sinonimo(Afirmacion, Sinonimo), Afirmacion \= Sinonimo}.
+
+%-------------------------------------ENFERMEDAD
+
+enfermedad --> ["Gripe"].

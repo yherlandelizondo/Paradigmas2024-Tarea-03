@@ -5,6 +5,6 @@
 % INPUT: User text 
 % OUTPUT: True or False
 % STRUCTURE: phrase(GrammarRule, InputList)
-analizarOracion(Input) :- phrase(oracion, Input).
-
+analizarDeporte(Input) :- phrase(oracionDeporte, Input).
+analizarEnfermedad(Input) :- phrase(oracionEnfermedad, Input).
 

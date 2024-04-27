@@ -5,7 +5,7 @@ Pregunta 1 - "Hola usuario, bienvenido a mrTrainer, dime, Que deporte quieres pr
 ciclismo
 Quiero practicar ciclismo 
 Voy a practicar ciclismo 
-Estoy interesado en [practicar ciclismo
+Estoy interesado en practicar ciclismo
 Tengo que practicar ciclismo
 Practico ciclismo / quiero correr
 Me interesa practicar ciclismo 

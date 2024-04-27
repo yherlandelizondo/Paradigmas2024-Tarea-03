@@ -73,3 +73,8 @@ sinonimo("El", "el").
 sinonimo("Me", "me").
 
 sinonimo("Yo", "yo").
+
+%-------------------------------------SINONIMOS AFIRMACION
+
+sinonimo("Si", "si").
+sinonimo("No", "no").
