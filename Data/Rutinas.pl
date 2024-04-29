@@ -70,8 +70,10 @@ diaEntreno("Jueves",N):-N=4;N=5;N=6.
 diaEntreno("Viernes",N):-N=3;N=4;N=5;N=6.
 diaEntreno("Sabado",N):-N=2;N=6.
 
+resta(N,R):- R is 7-N.
 
-printAllRoutines(DEP,ENF,DIF,FRE):-allRoutines(DEP,ENF,DIF,6-FRE,Routines),printRoutines(Routines).
+printAllRoutines(DEP,ENF,DIF,FRE):-resta(FRE,WORK),allRoutines(DEP,ENF,DIF,WORK,Routines),printRoutines(Routines).
+
 
 printRoutines([]).
 printRoutines(Rutinas):-firstElem(SubRutina,Rutinas),restList(Otras,Rutinas),printLista(SubRutina),nl,printRoutines(Otras).
