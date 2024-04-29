@@ -11,6 +11,7 @@ agregar(A,L,[A|L]).
 
 
 
+
 %----------------------------------------------------------
 printLista([]):-write(" ").
 printLista(Lista):-firstElem(X,Lista),restList(R,Lista),write(X),write(" "),printLista(R).
@@ -61,15 +62,17 @@ actividad(deporte("Ciclismo"),ENFERMEDAD,"cletear cuastas "):-not(ENFERMEDAD="As
 
 
 
-diaEntreno("Lunes",N):-N="2";N="3";N="4";N="5";N="6".
-diaEntreno("Martes",N):-N="4";N="5";N="6".
-diaEntreno("Miercoles",N):-N="3";N="5";N="6".
-diaEntreno("Jueves",N):-N="4";N="5";N="6".
-diaEntreno("Viernes",N):-N="3";N="4";N="5";N="6".
-diaEntreno("Sabado",N):-N="2";N="6".
+
+diaEntreno("Lunes",N):-N=2;N=3;N=4;N=5;N=6.
+diaEntreno("Martes",N):-N=4;N=5;N=6.
+diaEntreno("Miercoles",N):-N=3;N=5;N=6.
+diaEntreno("Jueves",N):-N=4;N=5;N=6.
+diaEntreno("Viernes",N):-N=3;N=4;N=5;N=6.
+diaEntreno("Sabado",N):-N=2;N=6.
 
 
-printAllRoutines(DEP,ENF,DIF,FRE):-allRoutines(DEP,ENF,DIF,FRE,Routines),printRoutines(Routines).
+printAllRoutines(DEP,ENF,DIF,FRE):-allRoutines(DEP,ENF,DIF,6-FRE,Routines),printRoutines(Routines).
+
 printRoutines([]).
 printRoutines(Rutinas):-firstElem(SubRutina,Rutinas),restList(Otras,Rutinas),printLista(SubRutina),nl,printRoutines(Otras).
 
