@@ -12,6 +12,7 @@
 :-consult('Logic/splitter.pl').
 :-consult('ExpertSystem/parser.pl').
 :-consult('Logic/listManager.pl').
+:-consult('Logic/Rutinas.pl').
 
 % Primer predicado, utilizado para inicial la interacción con el usuario
 mrTrainer :-
@@ -83,7 +84,7 @@ terminarConversacionLibres(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL, DIAS_LIBRES):-
     split_string(MSG_PREGUNTA, ' ', MSG_PREGUNTA_SPLIT), %split por espacios
     (member('?', MSG_PREGUNTA_SPLIT_CHAR) -> %si se encuentra signo interrogacion se verifica estructura
         (analizarPregunta(MSG_PREGUNTA_SPLIT) ->  %si la pregunta es coherente se pide la rutina 
-        nl,write(NOMBRE),nl,write(DEPORTE),nl, write(ENFERMEDAD),nl, write(NIVEL),nl, write(DIAS_LIBRES),! %FIXME:aqui va lo de jafet
+         nl, printAllRoutines(DEPORTE,ENFERMEDAD,NIVEL,DIAS_LIBRES),! %FIXME:
         ;errorPregunta(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL, DIAS_LIBRES))%si la pregunta no tiene sentido se muestra error
     ; errorPregunta(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL, DIAS_LIBRES)). %si no se encuentra ? en la oracion se muestra error
 
