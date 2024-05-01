@@ -95,10 +95,10 @@ terminarConversacionDeporte(NOMBRE):-
     nl,(TERMINATE = "si" -> write('Gracias por usar mrTrainer. Conversacion terminada.')),!; obtenerDeporte(NOMBRE). 
 
 % Predicado utilizado para terminar la conversación en la seccion de enfermedad
-terminarConversacionEnfermedad(NOMBRE, DEPORTE):-
+terminarConversacionEnfermedad(DEPORTE, NOMBRE):-
     nl,write('Deseas terminar la conversacion? (si/no)'), nl, 
     read_string(user_input, "\n", "\r", _, TERMINATE),
-    nl,(TERMINATE = "si" -> write('Gracias por usar mrTrainer. Conversacion terminada.')),!; obtenerEnfermedad(NOMBRE, DEPORTE). 
+    nl,(TERMINATE = "si" -> write('Gracias por usar mrTrainer. Conversacion terminada.')),!; obtenerEnfermedad(DEPORTE, NOMBRE). 
 
 %-------------------------------------Predicados para errores-------------------------------------
 
