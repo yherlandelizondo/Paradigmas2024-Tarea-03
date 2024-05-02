@@ -143,11 +143,11 @@ sinonimo("Asma", "Pulmonares").
 
 sinonimo("Diabetes", "diabetes").
 
-sinonimo("Cardiacas", "cardiacos").
-sinonimo("Cardiacas", "corazon").
+sinonimo("Cardiacos", "cardiacos").
+sinonimo("Cardiacos", "corazon").
 
-sinonimo("Lesiones", "lesion").
-sinonimo("Lesiones", "lesiones").
+sinonimo("Rodilla", "lesion").
+sinonimo("Rodilla", "lesiones").
 
 sinonimo("Columna", "columna").
 sinonimo("Columna", "espalda").
