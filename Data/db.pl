@@ -84,15 +84,17 @@ sinonimo("Mostrar", "Mostrarme").
 sinonimo("Mostrar", "mostrar").
 
 %-------------------------------------SINONIMOS DEPORTES
-
+sinonimo("Atletismo", "Atletismo").
 sinonimo("Atletismo", "atletismo").
 sinonimo("Atletismo", "correr").
 sinonimo("Atletismo", "Correr").
 
+sinonimo("Natacion", "Natacion").
 sinonimo("Natacion", "natacion").
 sinonimo("Natacion", "nadar").
 sinonimo("Natacion", "Nadar").
 
+sinonimo("Ciclismo", "Ciclismo").
 sinonimo("Ciclismo", "Bicicleta").
 sinonimo("Ciclismo", "ciclismo").
 sinonimo("Ciclismo", "bicicleta").
@@ -136,34 +138,48 @@ sinonimo("Rutina", "rutinas").
 
 %-------------------------------------SINONIMOS ENFERMEDADES
 
+sinonimo("Asma", "Asma").
 sinonimo("Asma", "asma").
 sinonimo("Asma", "pulmonar").
 sinonimo("Asma", "pulmonares").
 sinonimo("Asma", "Pulmonares").
 
+sinonimo("Diabetes", "Diabetes").
 sinonimo("Diabetes", "diabetes").
 
+sinonimo("Cardiacas", "Cardiacos").
 sinonimo("Cardiacas", "cardiacos").
 sinonimo("Cardiacas", "corazon").
 
+
+sinonimo("Lesiones", "Lesiones").
 sinonimo("Lesiones", "lesion").
 sinonimo("Lesiones", "lesiones").
 
+
+sinonimo("Columna", "Columna").
 sinonimo("Columna", "columna").
 sinonimo("Columna", "espalda").
 
+
+sinonimo("Rodilla", "Rodilla").
 sinonimo("Rodilla", "rodilla").
 
 %-------------------------------------SINONIMOS NIVEL
 
+sinonimo("Inicial", "Inicial").
 sinonimo("Inicial", "inicial").
 sinonimo("Inicial", "bajo").
 sinonimo("Inicial", "Bajo").
 
+
+sinonimo("Intermedio", "Intermedio").
 sinonimo("Intermedio", "intermedio").
 sinonimo("Intermedio", "medio").
 sinonimo("Intermedio", "Medio").
 
+
+sinonimo("Avanzado", "Avanzado").
 sinonimo("Avanzado", "avanzado").
 sinonimo("Avanzado", "alto").
 sinonimo("Avanzado", "Alto").
