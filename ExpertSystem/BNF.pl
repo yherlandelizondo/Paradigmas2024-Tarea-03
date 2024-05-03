@@ -245,6 +245,7 @@ enfermedad --> [Sinonimo], {sinonimo(Enfermedad, Sinonimo), Enfermedad \= Sinoni
 
 afirmacion --> ["si"].
 afirmacion --> ["no"].
+afirmacion --> [Sinonimo], {sinonimo(Afirmacion, Sinonimo), Afirmacion \= Sinonimo}.
 
 %-------------------------------------NIVELES
 

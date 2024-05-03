@@ -84,7 +84,7 @@ terminarConversacionLibres(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL, DIAS_LIBRES):-
     split_string(MSG_PREGUNTA, ' ', MSG_PREGUNTA_SPLIT), %split por espacios
     (member('?', MSG_PREGUNTA_SPLIT_CHAR) -> %si se encuentra signo interrogacion se verifica estructura
         (analizarPregunta(MSG_PREGUNTA_SPLIT) ->  %si la pregunta es coherente se pide la rutina 
-         nl, printAllRoutines(DEPORTE,ENFERMEDAD,NIVEL,DIAS_LIBRES),! %FIXME:
+         nl, printAllRoutines(DEPORTE,ENFERMEDAD,NIVEL,DIAS_LIBRES),mrTrainer,! %FIXME:
         ;errorPregunta(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL, DIAS_LIBRES))%si la pregunta no tiene sentido se muestra error
     ; errorPregunta(NOMBRE ,DEPORTE, ENFERMEDAD, NIVEL, DIAS_LIBRES)). %si no se encuentra ? en la oracion se muestra error
 

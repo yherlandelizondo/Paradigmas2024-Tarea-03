@@ -187,3 +187,12 @@ sinonimo("Avanzado", "Alto").
 %-------------------------------------SINONIMOS INTERROGANTE
 
 sinonimo("recomiendas?", "recomienda?").
+
+%-------------------------------------SINONIMO AFIRMACION
+
+sinonimo("no","NO").
+sinonimo("no","no").
+sinonimo("no","No").
+sinonimo("si","Si").
+sinonimo("si","SI").
+sinonimo("si","si").
