@@ -60,8 +60,8 @@ descanso(_,"alejarse del estres ").
 descanso(_,"pasar tiempo con la Family ").
 
 %Devuelve si el dia es de descanso o entreno dependiendo de los dias Libres habiles.
-diaEntreno("Lunes: ",Type,N):-((N>1,N<7)->Type="Entreno";Type="Lbre").
-diaEntreno("Martes: ",Type,N):-((N>3,N<7)->Type="Entreno";Type="Lbre").
+diaEntreno("Lunes: ",Type,N):-((N>1,N<7)->Type="Entreno";Type="Libre").
+diaEntreno("Martes: ",Type,N):-((N>3,N<7)->Type="Entreno";Type="Libre").
 diaEntreno("Miercoles: ",Type,N):-((N>2,N<7,not(N=4))->Type="Entreno";Type="Libre").
 diaEntreno("Jueves: ",Type,N):-((N>3,N<7)->Type="Entreno";Type="Libre").
 diaEntreno("Viernes: ",Type,N):-((N>2,N<7)->Type="Entreno";Type="Libre").
